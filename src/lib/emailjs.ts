@@ -1,4 +1,15 @@
-import emailjs from '@emailjs/browser';
+declare global {
+  interface Window {
+    emailjs?: {
+      init: (config: { publicKey: string }) => void;
+      send: (
+        serviceId: string,
+        templateId: string,
+        params: Record<string, string>,
+      ) => Promise<unknown>;
+    };
+  }
+}
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
@@ -26,6 +37,11 @@ export function isEmailjsConfigured() {
 export async function sendConsultationEmail(data: ConsultationEmailData) {
   if (!isEmailjsConfigured()) {
     throw new Error('EmailJS is not configured. Please set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY in your .env file.');
+  }
+
+  const emailjs = window.emailjs;
+  if (!emailjs) {
+    throw new Error('EmailJS SDK failed to load from CDN.');
   }
 
   emailjs.init({ publicKey: PUBLIC_KEY });
