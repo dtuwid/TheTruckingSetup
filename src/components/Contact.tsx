@@ -71,8 +71,9 @@ export default function Contact() {
         try {
           await sendConsultationEmail(data);
         } catch (emailErr) {
-          console.error('EmailJS send failed:', emailErr);
-          setErrorMsg('Your request was saved, but the email notification failed to send. We may still contact you.');
+          const detail = emailErr instanceof Error ? emailErr.message : String(emailErr);
+          console.error('EmailJS send failed:', detail);
+          setErrorMsg(`Your request was saved, but the email notification failed: ${detail}`);
           setStatus('error');
           (e.target as HTMLFormElement).reset();
           return;
