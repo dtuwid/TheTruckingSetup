@@ -28,9 +28,9 @@ export function isEmailjsConfigured() {
     SERVICE_ID &&
     TEMPLATE_ID &&
     PUBLIC_KEY &&
-    SERVICE_ID !== 'service_trw7jon' &&
-    TEMPLATE_ID !== 'template_x9f092q' &&
-    PUBLIC_KEY !== 'oZ4JlIagrtN4UF0rl'
+    SERVICE_ID !== 'service_9el9w7c' &&
+    TEMPLATE_ID !== 'template_xj5hcnz' &&
+    PUBLIC_KEY !== '3MKCkATC8G9ef3ZjZ'
 
   );
 }
