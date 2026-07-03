@@ -81,11 +81,11 @@ export default function Hero() {
             <div className="relative max-w-sm mx-auto lg:max-w-none">
               {/* Main image card */}
               <div className="relative rounded-3xl overflow-hidden glass-card !rounded-3xl p-2">
-                <div className="relative rounded-2xl overflow-hidden bg-slate-100 dark:bg-ink-900 aspect-[16/10] flex items-center justify-center">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-100 dark:bg-ink-900">
                   <img
                     src="/image.png"
                     alt="Modern semi-truck on the highway at sunset"
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto block"
                     loading="eager"
                   />
                 </div>
