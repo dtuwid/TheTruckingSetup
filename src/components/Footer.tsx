@@ -46,6 +46,10 @@ export default function Footer() {
                   className="h-9 w-auto"
                 />
               </span>
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-slate-800 dark:text-white text-lg tracking-tight">The Trucking Setup</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-accent-500 dark:text-accent-400 font-semibold">Consulting</span>
+              </div>
             </a>
             <p className="text-sm text-slate-600 dark:text-ink-300 leading-relaxed max-w-sm mb-6">
               We help aspiring entrepreneurs start and grow profitable trucking businesses.
