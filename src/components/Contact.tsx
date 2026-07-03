@@ -71,12 +71,7 @@ export default function Contact() {
         try {
           await sendConsultationEmail(data);
         } catch (emailErr) {
-          const detail = emailErr instanceof Error ? emailErr.message : String(emailErr);
-          console.error('EmailJS send failed:', detail);
-          setErrorMsg(`Your request was saved, but the email notification failed: ${detail}`);
-          setStatus('error');
-          (e.target as HTMLFormElement).reset();
-          return;
+          console.error('EmailJS send failed:', emailErr);
         }
       } else {
         console.warn('EmailJS not configured — skipping email send. Set VITE_EMAILJS_* env vars to enable email notifications.');
@@ -156,9 +151,9 @@ export default function Contact() {
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-6 animate-scale-in">
                     <CheckCircle2 className="w-10 h-10 text-white" />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-slate-800 dark:text-white mb-3">Request Received!</h3>
+                  <h3 className="font-display font-bold text-2xl text-slate-800 dark:text-white mb-3">Application Received</h3>
                   <p className="text-slate-600 dark:text-ink-300 max-w-md mb-6">
-                    Thank you for reaching out. Our team will contact you within 24 hours to schedule your free consultation.
+                    Your application has been received and we will contact you shortly.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
