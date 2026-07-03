@@ -83,7 +83,7 @@ export default function Hero() {
               <div className="relative rounded-3xl overflow-hidden glass-card !rounded-3xl p-2">
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                   <img
-                    src="https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    src="/image%20copy%20copy%20copy.png"
                     alt="Modern semi-truck on the highway at sunset"
                     className="w-full h-full object-cover object-center"
                     loading="eager"
