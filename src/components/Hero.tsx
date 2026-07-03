@@ -85,7 +85,7 @@ export default function Hero() {
                   <img
                     src="/image.png"
                     alt="Modern semi-truck on the highway at sunset"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                     loading="eager"
                   />
                 </div>
