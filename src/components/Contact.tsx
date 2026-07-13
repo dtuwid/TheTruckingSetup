@@ -67,17 +67,20 @@ export default function Contact() {
       const { error } = await supabase.from('consultation_requests').insert(data);
       if (error) throw error;
 
+      let emailWarning = '';
       if (isEmailjsConfigured()) {
         try {
           await sendConsultationEmail(data);
         } catch (emailErr) {
           console.error('EmailJS send failed:', emailErr);
+          emailWarning = emailErr instanceof Error ? emailErr.message : 'Email notification failed to send.';
         }
-      } else {
-        console.warn('EmailJS not configured — skipping email send. Set VITE_EMAILJS_* env vars to enable email notifications.');
       }
 
       setStatus('success');
+      if (emailWarning) {
+        setErrorMsg(emailWarning);
+      }
       (e.target as HTMLFormElement).reset();
     } catch (err) {
       setStatus('error');
@@ -152,9 +155,15 @@ export default function Contact() {
                     <CheckCircle2 className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="font-display font-bold text-2xl text-slate-800 dark:text-white mb-3">Application Received</h3>
-                  <p className="text-slate-600 dark:text-ink-300 max-w-md mb-6">
+                  <p className="text-slate-600 dark:text-ink-300 max-w-md mb-4">
                     Your application has been received and we will contact you shortly.
                   </p>
+                  {errorMsg && (
+                    <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-sm mb-4 max-w-md text-left">
+                      <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                      <span>Email notification could not be sent, but your submission was saved. We'll still contact you.</span>
+                    </div>
+                  )}
                   <button
                     onClick={() => setStatus('idle')}
                     className="btn-secondary"
