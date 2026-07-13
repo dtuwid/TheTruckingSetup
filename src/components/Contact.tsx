@@ -161,7 +161,7 @@ export default function Contact() {
                   {errorMsg && (
                     <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-sm mb-4 max-w-md text-left">
                       <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                      <span>Email notification could not be sent, but your submission was saved. We'll still contact you.</span>
+                      <span>{errorMsg || 'Email notification could not be sent, but your submission was saved.'}</span>
                     </div>
                   )}
                   <button
